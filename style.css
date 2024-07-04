@@ -7,11 +7,12 @@
 
 :root {
   --backgroundColor: hsl(148, 38%, 91%);
-  --btnColor: hsl(169, 82%, 27%);
+  --btnColor: hsl(155, 82%, 27%);
   --errorStateColor: hsl(0, 66%, 54%);
   --FormBackgroundColor: hsl(0, 0%, 100%);
   --bordersColor: hsl(186, 15%, 59%);
-  --ButtonHovoringColor: hsl(187, 24%, 22%);
+  --ButtonHovoringColor: hsl(170.53, 82.61%, 13.53%);
+  --selectedQueryColor: hsl(144.71, 37.78%, 91.18%);
 }
 
 body {
@@ -98,6 +99,8 @@ input[type="text"]:hover,
 }
 
 .query-container {
+  display: flex;
+  align-items: center;
   margin: 10px 0;
   padding: 15px 10px;
   border: 1px solid var(--bordersColor);
@@ -105,8 +108,36 @@ input[type="text"]:hover,
 }
 
 .query-container input[type="radio"] {
+  display: none;
+}
+
+.custom-radio {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--bordersColor);
+  background-color: white;
+  position: relative;
   margin-right: 10px;
-  color: var(--btnColor);
+}
+
+.svg-icon {
+  display: none;
+  width: 20px;
+  height: 20px;
+}
+input[type="radio"]:checked + .custom-radio .svg-icon {
+  display: block;
+}
+input[type="radio"]:checked + .custom-radio {
+  border: none;
+}
+.query-container.active {
+  background-color: var(--selectedQueryColor);
+}
+.query-container.active .custom-radio {
+  background-color: var(--selectedQueryColor);
 }
 #message {
   resize: none;
@@ -118,12 +149,37 @@ input[type="text"]:hover,
 }
 .contacted {
   display: flex;
+  align-items: center;
   margin-top: 20px;
 }
 .contacted input[type="checkbox"] {
-  margin-right: 20px;
+  display: none;
+}
+.custom-checkbox {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--bordersColor);
+  background-color: white;
+  margin-right: 10px;
+  position: relative;
   cursor: pointer;
 }
+
+.checkbox-icon {
+  display: none;
+  width: 20px;
+  height: 20px;
+}
+
+.contacted input[type="checkbox"]:checked + .custom-checkbox .checkbox-icon {
+  display: block;
+}
+
+.contacted input[type="checkbox"]:checked + .custom-checkbox {
+  border: none;
+}
+
 .submit {
   border: none;
   width: 100%;
